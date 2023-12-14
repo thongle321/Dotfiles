@@ -81,7 +81,7 @@ disabled = false # Disabled by default
 style = "bg:#3b4252"
 format = "[ $path ]($style)"
 truncation_length = 2
-truncation_symbol = ".../"
+truncation_symbol = "../"
 #read_only = " 󰌾"
 read_only = '  READ ONLY'
 

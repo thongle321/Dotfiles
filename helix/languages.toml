@@ -5,7 +5,7 @@ comment-token = "//"
 [[language]]
 name = "html"
 formatter = { command = 'npx', args = ["prettier", "--parser", "html"] }
-language-servers = [ "vscode-html-language-server", "tailwindcss-react", "emmet-ls"]
+language-servers = [ "vscode-html-language-server" ]
 
 [[language]]
 name = "css"
@@ -15,7 +15,7 @@ language-servers = [ "vscode-css-language-server", "tailwindcss-react", "emmet-l
 [[language]]
 name = "json"
 indent = { tab-width = 2, unit = "  " }
-language-server = { command = "json-languageserver", args = ["--stdio"] }
+language-servers = { command = "json-languageserver", args = ["--stdio"] }
 formatter = { command = "json-languageserver" , args = ["--stdin"] }
 
 [[language]]
@@ -48,8 +48,7 @@ formatter = { command = "astro-ls", args = ["--stdin"]}
 
 [[language]]
 name = "typescript"
-language-server = { command = "deno", args = ["lsp"] }
-config = { enable = true }
+language-servers = [ { name = "typescript-language-server", except-features = [ "format" ] }, "efm-lsp-prettier" ]
 
 [[language]]
 name = "cpp"

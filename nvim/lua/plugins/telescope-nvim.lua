@@ -12,7 +12,7 @@ return {
         return vim.fn.executable 'make' == 1
       end,
     },
-  },
+    },
   opts = {
     defaults = {
       layout_config = {
@@ -23,3 +23,4 @@ return {
     }
   }
 }
+

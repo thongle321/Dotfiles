@@ -8,6 +8,7 @@ return {
     -- background = {
     --   dark = "wave",
     -- },
+  keywordStyle = { italic = false },
   },
   config = function(_, opts)
     require('kanagawa').setup(opts) -- Replace this with your favorite colorscheme
