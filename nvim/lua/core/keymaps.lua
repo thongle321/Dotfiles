@@ -57,11 +57,11 @@ keymap.set('n', '<leader>fi', require('telescope.builtin').lsp_incoming_calls, {
 keymap.set('n', '<leader>fm', function() require('telescope.builtin').treesitter({default_text=":method:"}) end)
 
 -- Git-blame
-keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
+-- keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
 
 -- Harpoon
-keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
-keymap.set("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu)
+keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, {desc = 'Mark Files'})
+keymap.set("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu, {desc = 'File Navigation'})
 keymap.set("n", "<leader>h1", function() require("harpoon.ui").nav_file(1) end)
 keymap.set("n", "<leader>h2", function() require("harpoon.ui").nav_file(2) end)
 keymap.set("n", "<leader>h3", function() require("harpoon.ui").nav_file(3) end)
@@ -71,9 +71,11 @@ keymap.set("n", "<leader>h6", function() require("harpoon.ui").nav_file(6) end)
 keymap.set("n", "<leader>h7", function() require("harpoon.ui").nav_file(7) end)
 keymap.set("n", "<leader>h8", function() require("harpoon.ui").nav_file(8) end)
 keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end)
+keymap.set("n", "<leader>hn", require("harpoon.ui").nav_next, {desc = 'Next Mark'})
+keymap.set("n", "<leader>hp", require("harpoon.ui").nav_prev, {desc = 'Previous Mark'})
 
 -- Vim REST Console
-keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>") -- Run REST query
+keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>", {desc = "Run"}) -- Run REST query
 
 -- LSP
 keymap.set('n', '<leader>gg', '<cmd>lua vim.lsp.buf.hover()<CR>')
@@ -127,6 +129,16 @@ wk.register({
   ['<leader>d?'] = {"Ui scope"},
   ['<leader>de'] = {"Diagnostics"},
   ['<leader>h'] = {name = "Harpoon", _ = "which_key_ignore"},
+  ['<leader>h1'] = {'Mark 1'},
+  ['<leader>h2'] = {'Mark 2'},
+  ['<leader>h3'] = {'Mark 3'},
+  ['<leader>h4'] = {'Mark 4'},
+  ['<leader>h5'] = {'Mark 5'},
+  ['<leader>h6'] = {'Mark 6'},
+  ['<leader>h7'] = {'Mark 7'},
+  ['<leader>h8'] = {'Mark 8'},
+  ['<leader>h9'] = {'Mark 9'},
   ['<leader>s'] = {name = "Split Windows", _ = "which_key_ignore"},
+  ['<leader>x'] = {name = "REST query", _ = "which_key_ignore"},
 })
 

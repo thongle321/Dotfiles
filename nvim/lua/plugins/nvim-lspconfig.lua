@@ -21,10 +21,12 @@ return {
       ensure_installed = {
         -- "bashls", # requires npm to be installed
         -- "cssls", # requires npm to be installed
-        "html", --# requires npm to be installed
+        "html",
+        "cssls",
         -- "gradle_ls",
         -- "groovyls",
         "lua_ls",
+        "tsserver",
         -- "intelephense", # requires npm to be installed
         -- "jsonls", # requires npm to be installed
         -- "lemminx",
