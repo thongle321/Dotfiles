@@ -14,7 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- This has to be set before initializing lazy
 vim.g.mapleader = " "
-
+VSCodeNotify = vim.fn.VSCodeNotify
+VSCodeCall = vim.fn.VSCodeCall
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup("plugins", {
    change_detection = {
@@ -27,8 +28,9 @@ require("lazy").setup("plugins", {
 require("core.options")
 require("core.keymaps")
 if vim.g.vscode then
-  require ("vscode.settings-vscode")
+  require ('vscode/functions')
+  require ('vscode/settingsvscode')
 else
-  require ("plugins.nvim-whichkey")
+	require ("plugins.nvim-whichkey")
 end
 
