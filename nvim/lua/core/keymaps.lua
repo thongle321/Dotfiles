@@ -141,4 +141,3 @@ wk.register({
   ['<leader>s'] = {name = "Split Windows", _ = "which_key_ignore"},
   ['<leader>x'] = {name = "REST query", _ = "which_key_ignore"},
 })
-

@@ -20,19 +20,18 @@ return {
       -- Update this list to the language servers you need installed
       ensure_installed = {
         -- "bashls", # requires npm to be installed
-        -- "cssls", # requires npm to be installed
         "html",
         "cssls",
         -- "gradle_ls",
         -- "groovyls",
         "lua_ls",
+        "eslint",
         "tsserver",
         -- "intelephense", # requires npm to be installed
         -- "jsonls", # requires npm to be installed
         -- "lemminx",
         "marksman",
         "quick_lint_js",
-        "clangd"
         -- "tsserver", # requires npm to be installed
         -- "yamlls", # requires npm to be installed
       }
@@ -65,6 +64,13 @@ return {
         },
       },
     }
+    lspconfig.html.setup({})
+    lspconfig.cssls.setup({})
+    lspconfig.tsserver.setup({
+      preferences = {
+        disableSuggestions = true,
+      },
+    })
   end
 }
 

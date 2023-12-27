@@ -26,3 +26,9 @@ require("lazy").setup("plugins", {
 -- These modules are not loaded by lazy
 require("core.options")
 require("core.keymaps")
+if vim.g.vscode then
+  require ("vscode.settings-vscode")
+else
+  require ("plugins.nvim-whichkey")
+end
+
