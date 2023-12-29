@@ -56,3 +56,13 @@ vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true}
 vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
 
+local os = require("os")
+
+local path_to_desktop = os.getenv("USERPROFILE")
+
+local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
+
+vim.api.nvim_create_autocmd(
+    {"VimEnter"},
+    { pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
+)
