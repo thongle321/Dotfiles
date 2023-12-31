@@ -26,13 +26,6 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close Tab" }) -- close 
 keymap.set("n", "<leader>tn", ":tabn<CR>", { desc = "Next Tab" })      -- next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = "Previous Tab" })  -- previous tab
 
--- Diff keymaps
-keymap.set("n", "<leader>cc", ":diffput<CR>")   -- put diff from current to other during diff
-keymap.set("n", "<leader>cj", ":diffget 1<CR>") -- get diff from left (local) during merge
-keymap.set("n", "<leader>ck", ":diffget 3<CR>") -- get diff from right (remote) during merge
-keymap.set("n", "<leader>cn", "]c")             -- next diff hunk
-keymap.set("n", "<leader>cp", "[c")             -- previous diff hunk
-
 -- Quickfix keymaps
 keymap.set("n", "<leader>qn", ":cnext<CR>") -- jump to next quickfix list item
 keymap.set("n", "<leader>qp", ":cprev<CR>") -- jump to prev quickfix list item
@@ -57,9 +50,6 @@ keymap.set("n", "<leader>fi", require("telescope.builtin").lsp_incoming_calls, {
 keymap.set("n", "<leader>fm", function()
   require("telescope.builtin").treesitter({ default_text = ":method:" })
 end)
-
--- Git-blame
--- keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>") -- toggle git blame
 
 -- Harpoon
 keymap.set("n", "<leader>ha", require("harpoon.mark").add_file, { desc = "Mark Files" })
@@ -94,26 +84,23 @@ end)
 keymap.set("n", "<leader>hn", require("harpoon.ui").nav_next, { desc = "Next Mark" })
 keymap.set("n", "<leader>hp", require("harpoon.ui").nav_prev, { desc = "Previous Mark" })
 
--- Vim REST Console
-keymap.set("n", "<leader>xr", ":call VrcQuery()<CR>", { desc = "Run" }) -- Run REST query
-
 -- LSP
-keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>")
-keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-keymap.set("n", "<leader>rr", "<cmd>lua vim.lsp.buf.rename()<CR>")
-keymap.set("n", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
-keymap.set("v", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>")
-keymap.set("n", "<leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-keymap.set("n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>")
-keymap.set("n", "<leader>gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-keymap.set("n", "<leader>tr", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
-keymap.set("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>")
+keymap.set("n", "<leader>gg", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover" })
+keymap.set("n", "<leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { desc = "Definition" })
+keymap.set("n", "<leader>gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { desc = "Declaration" })
+keymap.set("n", "<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Implementation" })
+keymap.set("n", "<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { desc = "Type definition" })
+keymap.set("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "References" })
+keymap.set("n", "<leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Signature help" })
+keymap.set("n", "<leader>g<s-R>", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename" })
+keymap.set("n", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", { desc = "Format" })
+keymap.set("v", "<leader>gf", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", { desc = "Format" })
+keymap.set("n", "<leader>ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code action" })
+keymap.set("n", "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Diagnostic" })
+keymap.set("n", "<leader>gp", "<cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Diagnostic previous" })
+keymap.set("n", "<leader>gn", "<cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Diagnostic next" })
+keymap.set("n", "<leader>g<s-T>", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", { desc = "Document symbol" })
+keymap.set("i", "<C-Space>", "<cmd>lua vim.lsp.buf.completion()<CR>", { desc = "Completion" })
 
 -- Nvim-dap
 keymap.set("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { desc = "Toggle Breakpoint" })
@@ -182,5 +169,5 @@ wk.register({
   ["<leader>h8"] = { "Mark 8" },
   ["<leader>h9"] = { "Mark 9" },
   ["<leader>s"] = { name = "Split Windows", _ = "which_key_ignore" },
-  ["<leader>x"] = { name = "REST query", _ = "which_key_ignore" },
+  ["<leader>g"] = { name = "Lsp", _ = "which_key_ignore" },
 })

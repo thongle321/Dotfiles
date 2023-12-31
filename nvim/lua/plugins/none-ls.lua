@@ -6,8 +6,8 @@ return {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.biome,
+        null_ls.builtins.diagnostics.biome,
         null_ls.builtins.diagnostics.ruff,
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.formatting.black,

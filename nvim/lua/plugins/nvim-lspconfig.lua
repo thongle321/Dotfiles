@@ -7,7 +7,7 @@ return {
     -- LSP Manager Plugins
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
-
+    { "nvim-java/lua-async-await" },
     -- Additional lua configuration, makes nvim stuff amazing!
     { "folke/neodev.nvim" },
   },
@@ -28,9 +28,9 @@ return {
         -- "lemminx",
         "marksman",
         "pylsp",
+        "biome",
       },
     })
-
     local lspconfig = require("lspconfig")
     local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
     local lsp_attach = function(client, bufnr)
@@ -60,13 +60,8 @@ return {
     })
     lspconfig.html.setup({})
     lspconfig.cssls.setup({})
-    lspconfig.tsserver.setup({
-      preferences = {
-        disableSuggestions = true,
-      },
-    })
-    lspconfig.pylsp.setup({
-      filetypes = { "python" },
-    })
+    lspconfig.tsserver.setup({})
+    lspconfig.pylsp.setup({})
+    lspconfig.biome.setup({})
   end,
 }
