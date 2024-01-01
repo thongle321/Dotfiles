@@ -2,20 +2,25 @@
 Function osu { Start-Process "D:\Game\osu!\osu!.exe"}
 Function floorp { Start-Process "C:\Program Files\Floorp Lightning\floorp.exe"}
 Function Emacs { Start-Process "C:\Users\Moderator\scoop\apps\emacs\29.1\bin\emacs.exe"}
+
 # Useful shortcuts for traversing directories
 Function cd.. { Set-Location ..\.. }
 Function cd.... { Set-Location ..\..\.. }
 
-#Get path
-Function ll { Get-ChildItem -Path $pwd -File }
+#Get detail path
+Function ll 
+{
+    Get-ChildItem $Args[0] |
+        Format-Table Mode, @{N='Owner';E={(Get-Acl $_.FullName).Owner}}, Length, LastWriteTime, @{N='Name';E={if($_.Target) {$_.Name+' -> '+$_.Target} else {$_.Name}}}
+}
 
+#Reload profile
 Function reload-profile {
     & $profile
 }
 # ... (other parts of the script)
 
-# clangd-project.ps1
-
+#Create Cmake Lists
 function Create-CMakeLists {
     $content = @"
 cmake_minimum_required(VERSION 3.19)
@@ -43,6 +48,13 @@ target_include_directories(my_app PUBLIC "${CMAKE_SOURCE_DIR}/include")
 # Execute the function when the script is invoked with "clangd-project" command
 if ($MyInvocation.InvocationName -eq 'clangd-project') {
     Create-CMakeLists
+}
+
+# Create file
+Function touch
+{
+    param ([string]$Filename)
+    $null > $Filename
 }
 
 #Init StarShip
