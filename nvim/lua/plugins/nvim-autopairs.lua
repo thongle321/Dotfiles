@@ -1,12 +1,14 @@
 -- Auto-completion of bracket/paren/quote pairs
 return {
-  'windwp/nvim-autopairs',
+  "windwp/nvim-autopairs",
   event = "InsertEnter",
   opts = {
-    check_ts = true, -- enable treesitter
+    map_cr = false,
+    check_ts = true,                   -- enable treesitter
     ts_config = {
-      lua = { "string" }, -- don't add pairs in lua string treesitter nodes
+      lua = { "string" },              -- don't add pairs in lua string treesitter nodes
       javascript = { "template_string" }, -- don't add pairs in javascript template_string
-    }
-  }
+    },
+    disable_filetypes = {"TelescopePrompt", "spectr_panel"},
+  },
 }

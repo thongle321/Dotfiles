@@ -20,9 +20,7 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     require("luasnip.loaders.from_vscode").lazy_load()
-    require("luasnip.loaders.from_snipmate").lazy_load()
     vim.opt.completeopt = "menu,menuone,noselect"
-
     cmp.setup({
       window = {
         documentation = cmp.config.window.bordered(),

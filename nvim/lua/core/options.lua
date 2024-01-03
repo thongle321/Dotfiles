@@ -43,7 +43,7 @@ opt.splitbelow = true
 opt.iskeyword:append("-")
 
 -- Disable the mouse while in nvim
-opt.mouse = ""
+opt.mouse = "a"
 
 -- Folding
 opt.foldlevel = 20
@@ -66,4 +66,8 @@ vim.api.nvim_create_autocmd(
     {"VimEnter"},
     { pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
 )
+-- Enable ato change current working directory
 opt.autochdir = true
+
+
+

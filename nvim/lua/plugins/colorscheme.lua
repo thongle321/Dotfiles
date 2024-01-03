@@ -108,7 +108,7 @@ return {
   opts = {
     -- Replace this with your scheme-specific settings or remove to use the defaults
     -- transparent = true,
-    style = "night", -- other variations "storm, night, moon, day"
+    style = "storm", -- other variations "storm, night, moon, day"
   },
   config = function(_, opts)
     require('tokyonight').setup(opts) -- Replace this with your favorite colorscheme

@@ -61,7 +61,6 @@ return {
     lspconfig.html.setup({})
     lspconfig.cssls.setup({})
     lspconfig.tsserver.setup({})
-    lspconfig.pylsp.setup({})
-    lspconfig.biome.setup({})
+    lspconfig.pylsp.setup({})   
   end,
 }

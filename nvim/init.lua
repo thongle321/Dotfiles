@@ -15,8 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- This has to be set before initializing lazy
 vim.g.mapleader = " "
-VSCodeNotify = vim.fn.VSCodeNotify
-VSCodeCall = vim.fn.VSCodeCall
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup("plugins", {
   change_detection = {
