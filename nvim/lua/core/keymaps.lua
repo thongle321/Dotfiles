@@ -1,7 +1,7 @@
 -- Set leader key to space
 vim.g.mapleader = " "
-
-local keymap = vim.keymap
+                                
+ local keymap = vim.keymap
 -- General keymaps
 keymap.set("i", "jk", "<ESC>")                                       -- exit insert mode with jk
 keymap.set("i", "ii", "<ESC>")                                       -- exit insert mode with ii
@@ -170,5 +170,7 @@ wk.register({
   ["<leader>s"] = { name = "Split Windows", _ = "which_key_ignore" },
   ["<leader>g"] = { name = "Lsp", _ = "which_key_ignore" },
 })
--- Coc-keybindings
+-- Split windwos 
+keymap.set("n", "<C-w>", ":wincmd w<CR>")
+
 
