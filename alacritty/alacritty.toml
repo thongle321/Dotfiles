@@ -5,8 +5,7 @@ import = [
 working_directory = "None"
 
 [shell]
-program = "C:/Users/Moderator/AppData/Local/Microsoft/WindowsApps/pwsh.exe"
-args = ["-NoLogo"]
+program = "C:/Program Files/nu/bin/nu.exe"
 
 [font]
 normal = { family = "CaskaydiaCove Nerd Font", style = "Regular"}
