@@ -1,7 +1,8 @@
 -- Fuzzy finder
 return {
   'nvim-telescope/telescope.nvim',
-  lazy = true,
+  -- lazy = true,
+  event = "VeryLazy",
   branch = '0.1.x',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },

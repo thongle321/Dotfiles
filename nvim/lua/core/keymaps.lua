@@ -29,9 +29,6 @@ keymap.set("n", "<leader>tp", ":tabp<CR>", { desc = "Previous Tab" })  -- previo
 keymap.set("n", "<leader>qn", ":cnext<CR>", { desc = "Next error" })     -- jump to next quickfix list item
 keymap.set("n", "<leader>qp", ":cprev<CR>", { desc = "Previous error" }) -- jump to prev quickfix list item
 
--- Vim-maximizer
-keymap.set("n", "<leader>s<s-M>", ":MaximizerToggle<CR>") -- toggle maximize tab
-
 -- Telescope
 keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Search Files" })
 keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Search by Grep" })
@@ -169,4 +166,4 @@ wk.register({
 -- Split windwos
 keymap.set("n", "<C-w>", ":wincmd w<CR>")
 -- Neotree
-keymap.set("n", "<leader>e", ":Neotree toggle<CR>")
+keymap.set("n", "<leader>e", ":Lex<CR>")

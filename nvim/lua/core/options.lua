@@ -8,7 +8,7 @@ opt.relativenumber = true
 opt.number = true
 
 -- Tabs & Indentation
-opt.tabstop = 2
+opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
@@ -85,3 +85,6 @@ vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
 vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
 vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
+-- Netrw
+vim.g.netrw_keepdir = 0
+vim.g.netrw_winsize = 30

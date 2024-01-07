@@ -1,8 +1,9 @@
 return {
-  "neoclide/coc.nvim",
-  branch = "release",
-  ft = {
-    "cpp",
-    "c",
-  },
+    "neoclide/coc.nvim",
+    lazy = true,
+    branch = "release",
+    ft = {
+        "cpp",
+        "c",
+    },
 }

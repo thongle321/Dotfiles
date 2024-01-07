@@ -35,7 +35,6 @@ if vim.g.neovide then
   vim.keymap.set("c", "<C-v>", "<C-R>+")     -- Paste command mode
   vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
 end
-
 -- These modules are not loaded by lazy
 require("core.options")
 require("core.keymaps")
