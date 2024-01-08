@@ -1,11 +1,11 @@
-#+TILTE:Levisa's Emacs Config
-#+AUTHOR: Levisa Vanya (DT)
-#+DESCRIPTION: Levisa's personal Emacs config.
+#+TITLE: Levisa's Emacs Config
+#+AUTHOR: Levisa Vanya
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
+
 * TABLE OF CONTENTS :toc:
-- [[#important-program-to-load-file][IMPORTANT PROGRAM TO LOAD FILE]]
-  - [[#package-manager][Package Manager]]
+- [[#program-to-load][PROGRAM TO LOAD]]
+  - [[#elpaca-package-manager][Elpaca Package Manager]]
   - [[#load-evil-mode][Load Evil Mode]]
   - [[#general-keybindings][General Keybindings]]
 - [[#all-the-icons][ALL THE ICONS]]
@@ -13,22 +13,34 @@
 - [[#fonts][FONTS]]
   - [[#setting-the-font-face][Setting The Font Face]]
   - [[#zooming-inout][Zooming In/OuT]]
-- [[#graphical-user-interface-tweaks][GRAPHICAL USER INTERFACE TWEAKS]]
+- [[#graphical-user-interface-and-feature-tweaks][GRAPHICAL USER INTERFACE AND FEATURE TWEAKS]]
+  - [[#disable-startup-message][Disable Startup Message]]
+  - [[#enable-visible-bell][Enable Visible Bell]]
   - [[#disable-menubar-toolbars-and-scroolbars][Disable Menubar, Toolbars and Scroolbars]]
   - [[#display-line-numbers-and-truncated-lines][Display Line Numbers and Truncated Lines]]
   - [[#tab-size][Tab Size]]
+  - [[#make-esc-quit-prompts][Make ESC Quit Prompts]]
+  - [[#disable-backup-file][Disable Backup File]]
+  - [[#disable-auto-indent][Disable Auto Indent]]
+  - [[#auto-closing-pairs][Auto-Closing Pairs]]
 - [[#lsp-support][LSP SUPPORT]]
+  - [[#lsp-install][LSP INSTALL]]
+  - [[#company-mode][COMPANY MODE]]
+  - [[#minimal-setup][MINIMAL SETUP]]
+  - [[#setup-lsp][SETUP LSP]]
 - [[#org-mode][ORG MODE]]
   - [[#enabling-table-of-contents][Enabling Table of Contents]]
   - [[#enabling-org-bullets][Enabling Org Bullets]]
   - [[#disable-electric-indent][Disable Electric Indent]]
   - [[#source-code-block-tag-expansion][Source Code Block Tag Expansion]]
 - [[#theme][THEME]]
+  - [[#doom-themes][DOOM-THEMES]]
+  - [[#doom-modeline][DOOM-MODELINE]]
 - [[#which-key][WHICH-KEY]]
 - [[#reload-emacs][RELOAD EMACS]]
 
-* IMPORTANT PROGRAM TO LOAD FILE
-** Package Manager
+* PROGRAM TO LOAD
+** Elpaca Package Manager
 #+BEGIN_SRC emacs-lisp
     (defvar elpaca-installer-version 0.6)
     (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
@@ -66,10 +78,6 @@
 	(load "./elpaca-autoloads")))
     (add-hook 'after-init-hook #'elpaca-process-queues)
     (elpaca `(,@elpaca-order))
-  ;; Install a package via the elpaca macro
-  ;; See the "recipes" section of the manual for more details.
-  ;; (elpaca example-package)
-
 #+END_SRC
 
 ** Load Evil Mode
@@ -290,7 +298,17 @@ one, an error is signaled."
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 #+END_SRC
-* GRAPHICAL USER INTERFACE TWEAKS
+* GRAPHICAL USER INTERFACE AND FEATURE TWEAKS
+** Disable Startup Message
+#+begin_src emacs-lisp
+(setq inhibit-startup-message t)
+#+end_src
+
+** Enable Visible Bell
+#+begin_src emacs-lisp
+(setq visible-bell t)
+#+end_src
+
 ** Disable Menubar, Toolbars and Scroolbars
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
@@ -309,9 +327,73 @@ one, an error is signaled."
 (setq-default tab-width 4)
 #+END_SRC
 
-* LSP SUPPORT
+** Make ESC Quit Prompts 
 #+begin_src emacs-lisp
- (use-package c++-mode)
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+#+end_src
+
+** Disable Backup File
+#+begin_src emacs-lisp
+(setq make-backup-files nil)
+#+end_src
+
+** Disable Auto Indent
+#+begin_src emacs-lisp
+(transient-mark-mode -1)
+#+end_src
+
+** Auto-Closing Pairs
+#+begin_src emacs-lisp
+(electric-pair-mode 1)
+#+end_src
+* LSP SUPPORT
+** LSP INSTALL
+#+begin_src emacs-lisp
+  (use-package lsp-mode
+   :ensure t
+   :commands (lsp lsp-deferred)
+   :init)
+  (use-package lsp-treemacs
+   :ensure t) 
+   (with-eval-after-load 'lsp-mode
+   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+#+end_src
+** COMPANY MODE
+#+begin_src emacs-lisp
+(use-package company
+  :after lsp-mode
+  :hook (lsp-mode . company-mode)
+  :bind (:map company-active-map
+         ("<tab>" . company-complete-selection))
+        (:map lsp-mode-map
+         ("<tab>" . company-indent-or-complete-common))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-idle-delay 0.0))
+
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+#+end_src
+** MINIMAL SETUP
+#+begin_src emacs-lisp
+(setq gc-cons-threshold 100000000)
+(setq lsp-completion-provider :capf)
+(setq lsp-idle-delay 0.500)
+(setq lsp-log-io nil)
+(setq lsp-enable-links nil)
+(setq lsp-signature-render-documentation nil)
+(setq lsp-headerline-breadcrumb-enable nil)
+(setq lsp-ui-doc-enable nil)
+(setq lsp-completion-enable-additional-text-edit nil)
+#+end_src
+** SETUP LSP 
+*** Python
+#+begin_src emacs-lisp
+  (use-package python-mode
+   :mode "\\.py\\'"
+   :hook (python-mode . lsp-deferred)
+   :config
+  (setq python-indent-level 2))
 #+end_src
 * ORG MODE
 ** Enabling Table of Contents
@@ -336,7 +418,7 @@ one, an error is signaled."
 ** Source Code Block Tag Expansion
 | Typing the below + TAB | Expands to ...                          |
 |------------------------+-----------------------------------------|
-| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT |
 | <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
 | <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
 | <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
@@ -351,8 +433,38 @@ one, an error is signaled."
 #+END_SRC
 * THEME			
 #+begin_src emacs-lisp
-(add-to-list 'custom-theme-load-path "C:/Users/Moderator/.emacs.d/themes")
-(load-theme 'kanagawa t)
+;;(add-to-list 'custom-theme-load-path "C:/Users/Moderator/.emacs.d/themes")
+;;(load-theme 'kanagawa t)
+#+end_src
+** DOOM-THEMES
+#+begin_src emacs-lisp
+(use-package doom-themes
+  :ensure t
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-tokyo-night t) 
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
+#+end_src
+
+** DOOM-MODELINE
+#+begin_src emacs-lisp
+(use-package doom-modeline
+  :ensure t
+  :init   (doom-modeline-mode 1))
+(setq doom-modeline-height 25)
+(setq doom-modeline-bar-width 4)
+(setq doom-modeline-hud nil) 
+(setq doom-modeline-project-detection 'auto)     
 #+end_src
 * WHICH-KEY
 #+BEGIN_SRC emacs-lisp
