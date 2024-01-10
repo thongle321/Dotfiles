@@ -1,9 +1,9 @@
 #+TITLE: Levisa's Emacs Config
 #+AUTHOR: Levisa Vanya
 #+STARTUP: showeverything
-#+OPTIONS: toc:2
+#+OPTIONS: toc:2 num:nil ^:nil
 
-* TABLE OF CONTENTS :toc:
+* TABLE OF CONTENTS :toc:noexport:
 - [[#program-to-load][PROGRAM TO LOAD]]
   - [[#elpaca-package-manager][Elpaca Package Manager]]
   - [[#load-evil-mode][Load Evil Mode]]
@@ -369,7 +369,7 @@ one, an error is signaled."
 
 ** Auto-Closing Pairs
 #+begin_src emacs-lisp
-(electric-pair-mode 1)
+(electric-pair-mode -1)
 #+end_src
 
 ** Disable Auto-Save
@@ -389,64 +389,78 @@ one, an error is signaled."
 * LSP SUPPORT
 ** LSP INSTALL
 #+begin_src emacs-lisp
-  (use-package lsp-mode
-   :ensure t
-   :commands (lsp lsp-deferred)
-   :init)
-  (use-package lsp-treemacs
-   :ensure t) 
-   (with-eval-after-load 'lsp-mode
-   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+  ;; (use-package lsp-mode
+  ;;  :ensure t
+  ;;  :commands (lsp lsp-deferred)
+  ;;  :init)
+  ;; (use-package lsp-treemacs
+  ;;  :ensure t) 
+  ;;  (with-eval-after-load 'lsp-mode
+  ;;  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 #+end_src
 ** COMPANY MODE
 #+begin_src emacs-lisp
-(use-package company
-  :defer 2
-  :diminish
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t))
+  ;;   (use-package company
+  ;;     :defer 2
+  ;;     :diminish
+  ;;     :after lsp-mode
+  ;;     :hook (lsp-mode . company-mode)
+  ;;     :bind (:map company-active-map
+  ;;            ("<tab>" . company-complete-selection))
+  ;;           (:map lsp-mode-map
+  ;;            ("<tab>" . company-indent-or-complete-common))
+  ;;     :custom
+  ;;     (company-begin-commands '(self-insert-command))
+  ;;     (company-idle-delay .1)
+  ;;     (company-minimum-prefix-length 2)
+  ;;     (company-show-numbers t)
+  ;;     (company-tooltip-align-annotations 't)
+  ;;     (global-company-mode t))
 
-(use-package company-box
-  :after company
-  :diminish
-  :hook (company-mode . company-box-mode))
+  ;;   (use-package company-box
+  ;;     :after company
+  ;;     :diminish
+  ;;     :hook (company-mode . company-box-mode))
+  ;; (setq company-tooltip-align-annotations t)
+  ;; ;(setq company-vscode-light-icons-margin t)
+  ;; (setq company-format-margin-function #'company-vscode-light-icons-margin)
 #+end_src
 ** MINIMAL SETUP
 #+begin_src emacs-lisp
-(setq gc-cons-threshold 100000000)
-(setq lsp-completion-provider :capf)
-(setq lsp-idle-delay 0.500)
-(setq lsp-log-io nil)
-(setq lsp-enable-links nil)
-(setq lsp-signature-render-documentation nil)
-(setq lsp-headerline-breadcrumb-enable nil)
-(setq lsp-ui-doc-enable nil)
-(setq lsp-completion-enable-additional-text-edit nil)
+  ;; (setq gc-cons-threshold 100000000)
+  ;; (setq lsp-completion-provider :capf)
+  ;; (setq lsp-idle-delay 0.500)
+  ;; (setq lsp-log-io nil)
+  ;; (setq lsp-enable-links nil)
+  ;; (setq lsp-signature-render-documentation nil)
+  ;; (setq lsp-headerline-breadcrumb-enable nil)
+  ;; (setq lsp-ui-doc-enable nil)
+  ;; (setq lsp-completion-enable-additional-text-edit nil)
 #+end_src
 ** SETUP LSP 
 *** Python
 #+begin_src emacs-lisp
-  (use-package python-mode
-   :mode "\\.py\\'"
-   :hook (python-mode . lsp-deferred)
-   :config
-  (setq python-indent-level 2))
+  ;; (use-package python-mode
+  ;;  :mode "\\.py\\'"
+  ;;  :hook (python-mode . lsp-deferred)
+  ;;  :config
+  ;; (setq python-indent-level 2))
 #+end_src
 *** Disable Python Warning
 #+begin_src emacs-lisp
-(setq lsp-pyls-plugins-pycodestyle-enabled nil)
-#+end_src>
+;;(setq lsp-pyls-plugins-pycodestyle-enabled nil)
+#+end_src
+*** LSP Features
+#+begin_src emacs-lisp
+;;(setq lsp-ui-sideline-enable nil)
+;;(setq lsp-modeline-code-actions-enable nil)
+;;(setq lsp-ui-sideline-enable t)
+;;(setq lsp-modeline-diagnostics-enable nil)
+;;(setq lsp-ui-sideline-enable t)
+;;(setq lsp-signature-auto-activate t)
+;;(setq lsp-signature-render-documentation nil)
+
+#+end_src
 * ORG MODE
 ** Enabling Table of Contents
 #+BEGIN_SRC emacs-lisp
@@ -470,16 +484,16 @@ one, an error is signaled."
 ** Source Code Block Tag Expansion
 | Typing the below + TAB | Expands to ...                          |
 |------------------------+-----------------------------------------|
-| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT |
-| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
-| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
-| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
-| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
-| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
-| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
-| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
-| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
-| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
+| <a                     | '#+BEGIN__EXPORT ascii' … '#+END_EXPORT |
+| <c                     | '#+BEGIN__CENTER' … '#+END_CENTER'      |
+| <C                     | '#+BEGIN__COMMENT' … '#+END_COMMENT'    |
+| <e                     | '#+BEGIN__EXAMPLE' … '#+END_EXAMPLE'    |
+| <E                     | '#+BEGIN__EXPORT' … '#+END_EXPORT'      |
+| <h                     | '#+BEGIN__EXPORT html' … '#+END_EXPORT' |
+| <l                     | '#+BEGIN__EXPORT latex' … '#+END_EXPORT' |
+| <q                     | '#+BEGIN__QUOTE' … '#+END_QUOTE'        |
+| <s                     | '#+BEGIN__SRC' … '#+END_SRC'            |
+| <v                     | '#+BEGIN__VERSE' … '#+END_VERSE'        |
 #+BEGIN_SRC emacs-lisp
 (require 'org-tempo) 
 #+END_SRC
@@ -487,7 +501,7 @@ one, an error is signaled."
 ** Diminish Org Indent Mode
 #+begin_src emacs-lisp
 (eval-after-load 'org-indent '(diminish 'org-indent-mode))
-#+end_src>
+#+end_src
 
 ** Org Level Headers
 #+begin_src emacs-lisp
@@ -499,7 +513,7 @@ one, an error is signaled."
  '(org-level-5 ((t (:inherit outline-5 :height 1.3))))
  '(org-level-6 ((t (:inherit outline-5 :height 1.2))))
  '(org-level-7 ((t (:inherit outline-5 :height 1.1)))r 
-#+end_src>
+#+end_src
 * THEME			
 #+begin_src emacs-lisp
 ;;(add-to-list 'custom-theme-load-path "C:/Users/Moderator/.emacs.d/themes")
