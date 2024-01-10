@@ -1,57 +1,57 @@
 
 # Table of Contents
 
--   [PROGRAM TO LOAD](#org036861d)
-    -   [Elpaca Package Manager](#org1116449)
-    -   [Load Evil Mode](#org140015c)
--   [General Keybindings](#org73821b0)
--   [ALL THE ICONS](#org8fa5932)
--   [BUFFER-MOVE](#org4112a7e)
--   [FONTS](#org7f8150f)
-    -   [Setting The Font Face](#org7c2843f)
-    -   [Zooming In/OuT](#orgf210b19)
--   [GRAPHICAL USER INTERFACE AND FEATURE TWEAKS](#org9ffb280)
-    -   [Disable Startup Message](#org01abeab)
-    -   [Enable Visible Bell](#org8e9ca11)
-    -   [Disable Menubar, Toolbars and Scroolbars](#org13a5a32)
-    -   [Display Line Numbers and Truncated Lines](#org0367c6a)
-    -   [Tab Size](#org3aa26a4)
-    -   [Make ESC Quit Prompts](#org0696b65)
-    -   [Disable Backup File](#org34a1b1d)
-    -   [Disable Auto Indent](#org5b94a0c)
-    -   [Auto-Closing Pairs](#org844fa00)
-    -   [Disable Auto-Save](#org79202c8)
-    -   [Disable Column Number Mode](#org08cd67d)
-    -   [Disable Line Number Mode](#org919fa7c)
--   [LSP SUPPORT](#org94abbc6)
-    -   [LSP INSTALL](#org8590e37)
-    -   [COMPANY MODE](#orge129a50)
-    -   [MINIMAL SETUP](#orgf4b13ca)
-    -   [SETUP LSP](#org1255a11)
--   [ORG MODE](#orgb9dd041)
-    -   [Enabling Table of Contents](#orgf9d3168)
-    -   [Enabling Org Bullets](#org9729de9)
-    -   [Disable Electric Indent](#org99fa157)
-    -   [Source Code Block Tag Expansion](#orga8b8f65)
-    -   [Diminish Org Indent Mode](#org1fceb60)
-    -   [Org Level Headers](#org503e9d0)
--   [THEME](#org2efbbd1)
-    -   [DOOM-THEMES](#orga64b434)
-    -   [DOOM-MODELINE](#org0181e0d)
--   [WHICH-KEY](#org888978d)
--   [RELOAD EMACS](#org86ab3ed)
--   [DIMINISH](#orgd381ede)
--   [MINIBUFFER ESCAPE](#orga4d1dd8)
--   [NEOTREE](#org6097843)
+-   [PROGRAM TO LOAD](#orga8d53d2)
+    -   [Elpaca Package Manager](#org908b814)
+    -   [Load Evil Mode](#org57a9598)
+-   [General Keybindings](#orgfc40c40)
+-   [ALL THE ICONS](#org628e239)
+-   [BUFFER-MOVE](#org51a85a4)
+-   [FONTS](#org0e929cf)
+    -   [Setting The Font Face](#orgdd59d97)
+    -   [Zooming In/OuT](#org5045919)
+-   [GRAPHICAL USER INTERFACE AND FEATURE TWEAKS](#orga179502)
+    -   [Disable Startup Message](#org9ef835e)
+    -   [Enable Visible Bell](#orga213313)
+    -   [Disable Menubar, Toolbars and Scroolbars](#org9c5899a)
+    -   [Display Line Numbers and Truncated Lines](#org608d642)
+    -   [Tab Size](#org060a83d)
+    -   [Make ESC Quit Prompts](#org5b4d858)
+    -   [Disable Backup File](#org6c5b2ec)
+    -   [Disable Auto Indent](#org0193464)
+    -   [Auto-Closing Pairs](#orgf00939c)
+    -   [Disable Auto-Save](#orgfaf7ea3)
+    -   [Disable Column Number Mode](#org9653f64)
+    -   [Disable Line Number Mode](#orga1c159f)
+-   [LSP SUPPORT](#org1769e90)
+    -   [LSP INSTALL](#org0e2a7af)
+    -   [COMPANY MODE](#org9f509df)
+    -   [MINIMAL SETUP](#org71fa763)
+    -   [SETUP LSP](#org0043aa3)
+-   [ORG MODE](#org04a5cde)
+    -   [Enabling Table of Contents](#org1c32e3f)
+    -   [Enabling Org Bullets](#org14b16c5)
+    -   [Disable Electric Indent](#org1340988)
+    -   [Source Code Block Tag Expansion](#org26cae3c)
+    -   [Diminish Org Indent Mode](#org28bebc6)
+    -   [Org Level Headers](#org6a4491e)
+-   [THEME](#orgead6f0e)
+    -   [DOOM-THEMES](#org6c53ae9)
+    -   [DOOM-MODELINE](#org8ea539c)
+-   [WHICH-KEY](#org9ec38c7)
+-   [RELOAD EMACS](#org628e7df)
+-   [DIMINISH](#org4619814)
+-   [MINIBUFFER ESCAPE](#orgc735373)
+-   [NEOTREE](#org9ab5292)
 
 
 
-<a id="org036861d"></a>
+<a id="orga8d53d2"></a>
 
 # PROGRAM TO LOAD
 
 
-<a id="org1116449"></a>
+<a id="org908b814"></a>
 
 ## Elpaca Package Manager
 
@@ -93,7 +93,7 @@
     (elpaca `(,@elpaca-order))
 
 
-<a id="org140015c"></a>
+<a id="org57a9598"></a>
 
 ## Load Evil Mode
 
@@ -148,7 +148,7 @@
       ;;(elpaca nil (message "deferred"))
 
 
-<a id="org73821b0"></a>
+<a id="orgfc40c40"></a>
 
 # General Keybindings
 
@@ -226,7 +226,7 @@
     )
 
 
-<a id="org8fa5932"></a>
+<a id="org628e239"></a>
 
 # ALL THE ICONS
 
@@ -238,7 +238,7 @@
       :hook (dired-mode . (lambda () (all-the-icons-dired-mode t))))
 
 
-<a id="org4112a7e"></a>
+<a id="org51a85a4"></a>
 
 # BUFFER-MOVE
 
@@ -312,12 +312,12 @@
           (select-window other-win))))
 
 
-<a id="org7f8150f"></a>
+<a id="org0e929cf"></a>
 
 # FONTS
 
 
-<a id="org7c2843f"></a>
+<a id="orgdd59d97"></a>
 
 ## Setting The Font Face
 
@@ -337,7 +337,7 @@
     (setq-default line-spacing 0.12)
 
 
-<a id="orgf210b19"></a>
+<a id="org5045919"></a>
 
 ## Zooming In/OuT
 
@@ -347,26 +347,26 @@
     (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
 
-<a id="org9ffb280"></a>
+<a id="orga179502"></a>
 
 # GRAPHICAL USER INTERFACE AND FEATURE TWEAKS
 
 
-<a id="org01abeab"></a>
+<a id="org9ef835e"></a>
 
 ## Disable Startup Message
 
     (setq inhibit-startup-message t)
 
 
-<a id="org8e9ca11"></a>
+<a id="orga213313"></a>
 
 ## Enable Visible Bell
 
     (setq visible-bell t)
 
 
-<a id="org13a5a32"></a>
+<a id="org9c5899a"></a>
 
 ## Disable Menubar, Toolbars and Scroolbars
 
@@ -375,7 +375,7 @@
     (scroll-bar-mode -1)
 
 
-<a id="org0367c6a"></a>
+<a id="org608d642"></a>
 
 ## Display Line Numbers and Truncated Lines
 
@@ -383,42 +383,42 @@
     (global-visual-line-mode t)
 
 
-<a id="org3aa26a4"></a>
+<a id="org060a83d"></a>
 
 ## Tab Size
 
     (setq-default tab-width 4)
 
 
-<a id="org0696b65"></a>
+<a id="org5b4d858"></a>
 
 ## Make ESC Quit Prompts
 
     (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 
-<a id="org34a1b1d"></a>
+<a id="org6c5b2ec"></a>
 
 ## Disable Backup File
 
     (setq make-backup-files nil)
 
 
-<a id="org5b94a0c"></a>
+<a id="org0193464"></a>
 
 ## Disable Auto Indent
 
     (transient-mark-mode -1)
 
 
-<a id="org844fa00"></a>
+<a id="orgf00939c"></a>
 
 ## Auto-Closing Pairs
 
     (electric-pair-mode -1)
 
 
-<a id="org79202c8"></a>
+<a id="orgfaf7ea3"></a>
 
 ## Disable Auto-Save
 
@@ -427,26 +427,26 @@
 \#+end<sub>src</sub>>
 
 
-<a id="org08cd67d"></a>
+<a id="org9653f64"></a>
 
 ## Disable Column Number Mode
 
     (column-number-mode 0)
 
 
-<a id="org919fa7c"></a>
+<a id="orga1c159f"></a>
 
 ## Disable Line Number Mode
 
     (line-number-mode 0)
 
 
-<a id="org94abbc6"></a>
+<a id="org1769e90"></a>
 
 # LSP SUPPORT
 
 
-<a id="org8590e37"></a>
+<a id="org0e2a7af"></a>
 
 ## LSP INSTALL
 
@@ -460,7 +460,7 @@
     ;;  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
 
-<a id="orge129a50"></a>
+<a id="org9f509df"></a>
 
 ## COMPANY MODE
 
@@ -490,7 +490,7 @@
     ;; (setq company-format-margin-function #'company-vscode-light-icons-margin)
 
 
-<a id="orgf4b13ca"></a>
+<a id="org71fa763"></a>
 
 ## MINIMAL SETUP
 
@@ -505,7 +505,7 @@
     ;; (setq lsp-completion-enable-additional-text-edit nil)
 
 
-<a id="org1255a11"></a>
+<a id="org0043aa3"></a>
 
 ## SETUP LSP
 
@@ -521,31 +521,26 @@
 
 ### Disable Python Warning
 
-\#+begin<sub>src</sub> emacs-lisp
-;;(setq lsp-pyls-plugins-pycodestyle-enabled nil)
-\#+end<sub>src</sub>>
+    ;;(setq lsp-pyls-plugins-pycodestyle-enabled nil)
 
 
 ### LSP Features
 
-\#+begin<sub>src</sub> emacs-lisp
-;;(setq lsp-ui-sideline-enable nil)
-;;(setq lsp-modeline-code-actions-enable nil)
-;;(setq lsp-ui-sideline-enable t)
-;;(setq lsp-modeline-diagnostics-enable nil)
-;;(setq lsp-ui-sideline-enable t)
-;;(setq lsp-signature-auto-activate t)
-;;(setq lsp-signature-render-documentation nil)
-
-\#+end<sub>src</sub>>
+    ;;(setq lsp-ui-sideline-enable nil)
+    ;;(setq lsp-modeline-code-actions-enable nil)
+    ;;(setq lsp-ui-sideline-enable t)
+    ;;(setq lsp-modeline-diagnostics-enable nil)
+    ;;(setq lsp-ui-sideline-enable t)
+    ;;(setq lsp-signature-auto-activate t)
+    ;;(setq lsp-signature-render-documentation nil)
 
 
-<a id="orgb9dd041"></a>
+<a id="org04a5cde"></a>
 
 # ORG MODE
 
 
-<a id="orgf9d3168"></a>
+<a id="org1c32e3f"></a>
 
 ## Enabling Table of Contents
 
@@ -554,7 +549,7 @@
      :init (add-hook 'org-mode-hook 'toc-org-enable))
 
 
-<a id="org9729de9"></a>
+<a id="org14b16c5"></a>
 
 ## Enabling Org Bullets
 
@@ -563,14 +558,14 @@
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
-<a id="org99fa157"></a>
+<a id="org1340988"></a>
 
 ## Disable Electric Indent
 
     (electric-indent-mode -1)
 
 
-<a id="orga8b8f65"></a>
+<a id="org26cae3c"></a>
 
 ## Source Code Block Tag Expansion
 
@@ -592,31 +587,31 @@
 <tbody>
 <tr>
 <td class="org-left">&lt;a</td>
-<td class="org-left">'#+BEGIN_<sub>EXPORT</sub> ascii' … '#+END<sub>EXPORT</sub></td>
+<td class="org-left">'#+BEGIN_EXPORT ascii' … '#+END_EXPORT</td>
 </tr>
 
 
 <tr>
 <td class="org-left">&lt;c</td>
-<td class="org-left">'#+BEGIN_<sub>CENTER</sub>' … '#+END<sub>CENTER</sub>'</td>
+<td class="org-left">'#+BEGIN_CENTER' … '#+END_CENTER'</td>
 </tr>
 
 
 <tr>
 <td class="org-left">&lt;C</td>
-<td class="org-left">'#+BEGIN_<sub>COMMENT</sub>' … '#+END<sub>COMMENT</sub>'</td>
+<td class="org-left">'#+BEGIN_COMMENT' … '#+END_COMMENT'</td>
 </tr>
 
 
 <tr>
 <td class="org-left">&lt;e</td>
-<td class="org-left">'#+BEGIN_<sub>EXAMPLE</sub>' … '#+END<sub>EXAMPLE</sub>'</td>
+<td class="org-left">'#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'</td>
 </tr>
 
 
 <tr>
 <td class="org-left">&lt;E</td>
-<td class="org-left">'#+BEGIN_<sub>EXPORT</sub>' … '#+END<sub>EXPORT</sub>'</td>
+<td class="org-left">'#+BEGIN_EXPORT' … '#+END_EXPORT'</td>
 </tr>
 
 
@@ -654,14 +649,14 @@
     (require 'org-tempo) 
 
 
-<a id="org1fceb60"></a>
+<a id="org28bebc6"></a>
 
 ## Diminish Org Indent Mode
 
     (eval-after-load 'org-indent '(diminish 'org-indent-mode))
 
 
-<a id="org503e9d0"></a>
+<a id="org6a4491e"></a>
 
 ## Org Level Headers
 
@@ -675,7 +670,7 @@
      '(org-level-7 ((t (:inherit outline-5 :height 1.1)))r 
 
 
-<a id="org2efbbd1"></a>
+<a id="orgead6f0e"></a>
 
 # THEME
 
@@ -683,7 +678,7 @@
     ;;(load-theme 'kanagawa t)
 
 
-<a id="orga64b434"></a>
+<a id="org6c53ae9"></a>
 
 ## DOOM-THEMES
 
@@ -705,7 +700,7 @@
       (doom-themes-org-config))
 
 
-<a id="org0181e0d"></a>
+<a id="org8ea539c"></a>
 
 ## DOOM-MODELINE
 
@@ -900,7 +895,7 @@
     ;; (setq doom-modeline-after-update-env-hook nil)    
 
 
-<a id="org888978d"></a>
+<a id="org9ec38c7"></a>
 
 # WHICH-KEY
 
@@ -923,7 +918,7 @@
              which-key-separator "   "))
 
 
-<a id="org86ab3ed"></a>
+<a id="org628e7df"></a>
 
 # RELOAD EMACS
 
@@ -933,7 +928,7 @@
       (load-file user-init-file))
 
 
-<a id="orgd381ede"></a>
+<a id="org4619814"></a>
 
 # DIMINISH
 
@@ -941,14 +936,14 @@
      :ensure t)
 
 
-<a id="orga4d1dd8"></a>
+<a id="orgc735373"></a>
 
 # MINIBUFFER ESCAPE
 
     (global-set-key [escape] 'keyboard-escape-quit)
 
 
-<a id="org6097843"></a>
+<a id="org9ab5292"></a>
 
 # NEOTREE
 
