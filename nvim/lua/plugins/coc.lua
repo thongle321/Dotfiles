@@ -1,6 +1,6 @@
 return {
     "neoclide/coc.nvim",
-    lazy = true,
+    event = {"BufReadPre", "BufNewFile"},
     branch = "release",
     ft = {
         "cpp",

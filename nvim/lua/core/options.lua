@@ -88,3 +88,5 @@ vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 -- Netrw
 vim.g.netrw_keepdir = 0
 vim.g.netrw_winsize = 30
+-- Cursor for insert mode
+opt.guicursor = "n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20,i:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"

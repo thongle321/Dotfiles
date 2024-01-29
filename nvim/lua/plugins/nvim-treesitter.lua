@@ -2,9 +2,8 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     -- event = VeryLazy',
-    event = { "BufNew", "BufReadPre", "InsertEnter" },
-    -- event = "BufReadPost",
-    dependencies = {
+    event = { "BufNewFile", "BufReadPre"},
+        dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = ":TSUpdate",

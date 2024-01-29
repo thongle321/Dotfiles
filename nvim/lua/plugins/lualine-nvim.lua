@@ -5,11 +5,12 @@ return {
         'nvim-tree/nvim-web-devicons', -- fancy icons
         'linrongbin16/lsp-progress.nvim', -- LSP loading progress
     },
-    event = "VeryLazy",
+    --event = "VeryLazy",
+    event = {"BufReadPre", "BufNewFile"},
     opts = {
         options = {
             --theme = 'codedark', -- lualine theme
-            theme = 'wombat'
+            theme = "auto"
         },
         sections = {
             lualine_c = {

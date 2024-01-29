@@ -167,3 +167,4 @@ wk.register({
 keymap.set("n", "<C-w>", ":wincmd w<CR>")
 -- Neotree
 keymap.set("n", "<leader>e", ":Lex<CR>")
+
