@@ -135,6 +135,17 @@ keymap.set("n", "<leader>dh", "<cmd>Telescope dap commands<cr>", { desc = "Teles
 keymap.set("n", "<leader>de", function()
     require("telescope.builtin").diagnostics({ default_text = ":E:" })
 end)
+-- Trouble
+keymap.set("n", "<s-T>", "<cmd>TroubleToggle<cr>")
+-- Split windwos
+keymap.set("n", "<C-w>", "<cmd>wincmd w<CR>")
+-- Toggle term
+function _G.set_terminal_keymaps()
+    local opts = {noremap = true}
+    vim.api.nvim_buf_set_keymap(0, 't', '<esc', [[<c-\><C-n>]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<c-\><C-n><C-W>k]], opts)
+end
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 -- Which-key
 local wk = require("which-key")
 wk.register({
@@ -163,8 +174,4 @@ wk.register({
     ["<leader>g"] = { name = "Lsp", _ = "which_key_ignore" },
     ["<leader>q"] = { name = "Quickfix", _ = "which_key_ignore" },
 })
--- Split windwos
-keymap.set("n", "<C-w>", ":wincmd w<CR>")
--- Neotree
-keymap.set("n", "<leader>e", ":Lex<CR>")
 

@@ -80,18 +80,34 @@
 --   end
 -- }
 return {
-    'navarasu/onedark.nvim',
+    "RRethy/nvim-base16",
     lazy = false,
     priority = 1000,
-    config = function(_, opts)
-        require('onedark').setup(opts)
-        vim.cmd("colorscheme onedark")
-    end,
     opts = {
-        style = "cool",
-    }
+    },
+    config = function(_, opts)
+        vim.cmd("colorscheme base16-onedark")
+    end
 }
--- Kanagawa Theme (Original)
+-- return {
+--     "blazkowolf/gruber-darker.nvim",
+--     lazy = false,
+--     priority = 1000,
+--     opts = {
+--         bold = false,
+--         italic = {
+--             strings = false,
+--             comments = false,
+--         },
+--         underline = false,
+--         undercurl = false,
+--     },
+--     config = function(_, opts)
+--         require("gruber-darker").setup(opts)
+--         vim.cmd("colorscheme gruber-darker")
+--     end,
+-- }
+--Kanagawa Theme (Original)
 -- return {
 --   -- https://github.com/rebelot/kanagawa.nvim
 --   'rebelot/kanagawa.nvim', -- You can replace this with your favorite colorscheme

@@ -3,8 +3,8 @@ return {
     -- LSP Configuration
     "neovim/nvim-lspconfig",
     -- event = "VeryLazy",
-    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
-    event = { 'BufReadPre', 'BufNewFile' },
+    cmd = { 'LspInfo', 'LspInstall', 'LspStart', 'Mason' },
+    event = { 'BufReadPost' },
     dependencies = {
         -- LSP Manager Plugins
         { "williamboman/mason.nvim" },
@@ -29,8 +29,9 @@ return {
                 -- "jsonls", # requires npm to be installed
                 -- "lemminx",
                 "marksman",
-                "pylsp",
                 "biome",
+                "vls",
+                "pyright",
             },
         })
         local lspconfig = require("lspconfig")
@@ -60,29 +61,59 @@ return {
                 },
             },
         })
+        lspconfig.clangd.setup({
+            cmd =
+            { "D:/mingw64/bin/clangd.exe",
+                "--completion-style=detailed",
+                "--all-scopes-completion"
+            },
+            on_attach = function(client)
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+            end
+        })
         lspconfig.html.setup({})
         lspconfig.cssls.setup({})
         lspconfig.tsserver.setup({})
-        lspconfig.pylsp.setup({})
-
-        vim.o.completeopt = "menuone,noinsert,noselect"
-        vim.opt.shortmess = vim.opt.shortmess + "c"
-        vim.diagnostic.config({
-            update_in_insert = true,
-            virtual_text = false,
-            float =
-            {
-                border = "rounded",
-                style = "minimal",
-                source = "always",
-                header = "",
-                prefix = ""
-            }
-
+        lspconfig.pyright.setup({})
+        lspconfig.vls.setup({
+            cmd = { "C:/Users/Moderator/AppData/Local/nvim-data/mason/bin/vls.cmd" },
+            -- filetypes = { "v", "vlang" },
+            -- root_dir = require('lspconfig.util').root_pattern("v.mod", ".git")
         })
-        vim.o.updatetime = 250
+        vim.cmd([[au BufNewFile,BufRead *.v set filetype=vlang]])
+        -- vim.o.completeopt = "menuone,noinsert,noselect"
+        -- vim.opt.shortmess = vim.opt.shortmess + "c"
+        -- vim.diagnostic.config({
+        --     update_in_insert = true,
+        --     virtual_text = false,
+        --     float =
+        --     {
+        --         border = "rounded",
+        --         style = "minimal",
+        --         source = "always",
+        --         header = "",
+        --         prefix = ""
+        --     }
+
+        -- })
+        diagnostics = {
+            underline = true,
+            update_in_insert = false,
+            virtual_text = {
+                spacing = 4,
+                source = "if_many",
+                prefix = "●",
+                -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+                -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+                -- prefix = "icons",
+            },
+            severity_sort = true,
+        }
+        -- vim.o.updatetime = 250
         vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
         vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335 guifg=#abb2bf]]
+        inlay_hints = { enabled = true }
     end,
     ft = {
         "html",
@@ -92,30 +123,5 @@ return {
         "py",
         "js",
         "ts",
-    },
-    diagnostics = {
-        underline = true,
-        update_in_insert = false,
-        virtual_text = {
-            spacing = 4,
-            source = "if_many",
-            prefix = "●",
-            -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-            -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-            -- prefix = "icons",
-        },
-        severity_sort = true,
-    },
-    inlay_hints = {
-        enabled = false,
-    },
-    -- add any global capabilities here
-    capabilities = {},
-    -- options for vim.lsp.buf.format
-    -- `bufnr` and `filter` is handled by the LazyVim formatter,
-    -- but can be also overridden when specified
-    format = {
-        formatting_options = nil,
-        timeout_ms = nil,
     },
 }

@@ -28,7 +28,8 @@ if vim.g.neovide then
     vim.g.neovide_cursor_animation_length = 0
     vim.g.neovide_cursor_antialiasing = false
     vim.g.neovide_fullscreen = false
-    vim.o.guifont = "CaskaydiaCove Nerd Font:h13"
+    vim.opt.linespace = 1
+    vim.o.guifont = "Iosevka Nerd Font:h14"
     vim.keymap.set("v", "<C-c>", '"+y')         -- Copy
     vim.keymap.set("n", "<C-v>", '"+P')         -- Paste normal mode
     vim.keymap.set("v", "<C-v>", '"+P')         -- Paste visual mode
@@ -38,4 +39,3 @@ end
 -- These modules are not loaded by lazy
 require("core.options")
 require("core.keymaps")
-
