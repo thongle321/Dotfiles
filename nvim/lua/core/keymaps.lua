@@ -138,7 +138,7 @@ end)
 -- Trouble
 keymap.set("n", "<s-T>", "<cmd>TroubleToggle<cr>")
 -- Split windwos
-keymap.set("n", "<C-w>", "<cmd>wincmd w<CR>")
+--keymap.set("n", "<C-w>", "<cmd>wincmd w<CR>")
 -- Toggle term
 function _G.set_terminal_keymaps()
     local opts = {noremap = true}

@@ -67,10 +67,10 @@ return {
                 "--completion-style=detailed",
                 "--all-scopes-completion"
             },
-            on_attach = function(client)
-                client.server_capabilities.documentFormattingProvider = false
-                client.server_capabilities.documentRangeFormattingProvider = false
-            end
+            -- on_attach = function(client)
+            --     client.server_capabilities.documentFormattingProvider = false
+            --     client.server_capabilities.documentRangeFormattingProvider = false
+            -- end
         })
         lspconfig.html.setup({})
         lspconfig.cssls.setup({})
@@ -97,7 +97,7 @@ return {
         --     }
 
         -- })
-        diagnostics = {
+        Diagnostics = {
             underline = true,
             update_in_insert = false,
             virtual_text = {
@@ -113,7 +113,7 @@ return {
         -- vim.o.updatetime = 250
         vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
         vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335 guifg=#abb2bf]]
-        inlay_hints = { enabled = true }
+        Inlay_hints = { enabled = true }
     end,
     ft = {
         "html",

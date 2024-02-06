@@ -56,7 +56,7 @@ return {
             ["<C-h>"] = "actions.select_split",
             ["<C-t>"] = "actions.select_tab",
             ["<C-p>"] = "actions.preview",
-            ["<C-c>"] = "actions.close",
+            ["<C-x>"] = "actions.close",
             ["<C-l>"] = "actions.refresh",
             ["-"] = "actions.parent",
             ["_"] = "actions.open_cwd",
@@ -145,5 +145,6 @@ return {
     },
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }),
+    vim.keymap.set("n", "<S-e>", "<CMD>Oil --float<CR>", { desc = "Oil in float" })
 }
